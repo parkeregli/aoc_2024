@@ -41,7 +41,7 @@ func readNumberPairs(filename string) ([]NumberPair, error) {
 	return pairs, nil
 }
 
-func calculateTotalDistance(pairs []NumberPair) float64 {
+func calculateTotalDistance(pairs []NumberPair) int {
 	if len(pairs) == 0 {
 		return 0
 	}
@@ -57,7 +57,7 @@ func calculateTotalDistance(pairs []NumberPair) float64 {
 	for i := range firsts {
 		totalDis += math.Abs(firsts[i] - seconds[i])
 	}
-	return totalDis
+	return int(totalDis)
 }
 
 func Solve() {
@@ -66,5 +66,5 @@ func Solve() {
 		log.Fatalf("Error processing number pairs: %v", err)
 	}
 	totalDis := calculateTotalDistance(pairs)
-	fmt.Println(int(totalDis))
+	fmt.Printf("Day 1: %d\n", totalDis)
 }
